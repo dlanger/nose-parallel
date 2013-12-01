@@ -7,6 +7,18 @@ In an ideal world, test suites should be fast enough that they can
 be run locally without extra engineering. This plugin is there to help 
 when you can't get that to happen.
 
+This **won't** help you run tests in parallel on one machine in different 
+threads; that's what the built-in `multiprocess 
+<http://nose.readthedocs.org/en/latest/plugins/multiprocess.html>`_ plugin 
+is for.
+
+This **will** help you split up your test suites so that you can run the 
+suites on multiple machines and not have the same test run twice - think 
+Jenkins with the 
+`multijob <https://wiki.jenkins-ci.org/display/JENKINS/Multijob+Plugin>`_ 
+plugin, or CI services like `CircleCI <https://circleci.com/docs/parallel-manual-setup>`_.
+
+
 Install
 -------
 
@@ -18,13 +30,21 @@ Install
 Usage
 -----
 
-Run nosetests with the ``--with-timer`` flag, and you will see a list of the
-tests and the time spent by each one (in seconds):
+On each machine:
+
+1 Export environment variables ``NODE_TOTAL`` (the number of machines on which
+the suite will be run) and and ``NODE_INDEX``(the 0-based index of this machine)
+2 Run nosetests with the ``--with-parallel` flag
+3 Do something to join the results from all the machines back together
+
+For example, this is how we'd run nosetests on the second machine in a 
+four-machine testing cluster:
 
 .. code:: bash
 
-   myapp.tests.ABigTestCase.test_the_world_is_running: 56.0010s
-   myapp.tests.ABigTestCase.test_the_rest_of_the_galaxy_is_running: 2356.0010s
+   NODE_TOTAL=4 NODE_INDEX=1 nosetests --with-parallel
+   
+
 
 
 How do I show only the ``n`` slowest tests?
