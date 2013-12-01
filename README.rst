@@ -43,7 +43,7 @@ four-machine testing cluster:
 
    NODE_TOTAL=4 NODE_INDEX=1 nosetests --with-parallel
    
-The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``) are also supported.
+The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``, respectively) are also supported.
 
 
 License
