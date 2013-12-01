@@ -14,7 +14,7 @@ class ParallelPlugin(Plugin):
     def configure(self, options, config):
         super(ParallelPlugin, self).configure(options, config)
         self.total_nodes = int(os.environ.get('CIRCLE_NODE_TOTAL') or os.environ.get('NODE_TOTAL', 1))
-        self.node_index = int(os.environ.get('CIRCLE_NODE_NODE_INDEX') or os.environ.get('NODE_INDEX', 0))
+        self.node_index = int(os.environ.get('CIRCLE_NODE_INDEX') or os.environ.get('NODE_INDEX', 0))
 
     def wantMethod(self, method):
         try:
