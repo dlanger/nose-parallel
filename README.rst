@@ -4,8 +4,8 @@ nose-parallel
 A plugin to help split up your tests runs across multiple machines.
 
 In an ideal world, test suites should be fast enough that they can 
-be run locally without extra engineering. This plugin is there to help 
-when you can't get that to happen.
+be run locally on a single machine without extra engineering. This 
+plugin is there to help when you can't make that to happen.
 
 This **won't** help you run tests in parallel on one machine in different 
 threads; that's what the built-in `multiprocess 
