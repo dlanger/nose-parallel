@@ -43,6 +43,8 @@ four-machine testing cluster:
 
    NODE_TOTAL=4 NODE_INDEX=1 nosetests --with-parallel
    
+   
+If you don't set those variables, ``nose-parallel`` will do the right thing and run all your tests. 
 The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``, 
 respectively) are also natively supported.
 
