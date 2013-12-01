@@ -5,10 +5,10 @@ import logging
 
 from nose.plugins.base import Plugin
 
-log = logging.getLogger('nose.plugin.timer')
+log = logging.getLogger('nose.plugin.parallel')
 
 
-class TimerPlugin(Plugin):
+class ParallelPlugin(Plugin):
     name = 'parallel'
 
     def configure(self, options, config):
