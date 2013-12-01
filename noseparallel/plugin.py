@@ -1,5 +1,4 @@
 import os
-import struct
 import hashlib
 import logging
 
@@ -27,8 +26,7 @@ class ParallelPlugin(Plugin):
     def _pick_by_name(self, name):
         m = hashlib.md5()
         m.update(name)
-        b_hash = m.digest()
-        class_numeric_id = sum(struct.unpack("<L", b_hash[ct * 4:ct * 4 + 4])[0] for ct in xrange(4))
+        class_numeric_id = int(m.hexdigest(), 16)
         if class_numeric_id % self.total_nodes == self.node_index:
             return None
         return False
