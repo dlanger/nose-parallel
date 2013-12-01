@@ -1,14 +1,18 @@
-nose-timer
+nose-parallel
 ==========
 
-A timer plugin for nosetests that answers the question: *how much time does every test takes?*
+A plugin to help split up your tests runs across multiple machines.
+
+In an ideal world, test suites should be fast enough that they can 
+be run locally without extra engineering. This plugin is there to help 
+when you can't get that to happen.
 
 Install
 -------
 
 .. code::
 
-   pip install nose-timer
+   pip install nose-parallel
 
 
 Usage
@@ -59,31 +63,19 @@ Note that ``--vv`` should be enabled as well to view info logs.
 License
 -------
 
-``nose-timer`` is an MIT/BSD dual-Licensed library.
+``nose-parallel`` is released under the MIT license.
 
 
 Contribute
 ----------
 
-- Check for open issues or open a fresh issue to start a discussion around a
-  feature idea or a bug.
-- Fork the repository on GitHub to start making your changes to the master
-  branch (or branch off of it).
-- Write a test which shows that the bug was fixed or that the feature
-  works as expected.
-- Send a pull request and bug the maintainer until it gets merged and
-  published.
-- Make sure to add yourself to the author's file in ``setup.py`` and the
-  ``Contributors`` section below :)
+- Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
+- Fork the repository on GitHub to start making your changes to the master branch (or branch off of it).
+- Send a pull request and bug the maintainer until it gets merged and published.
+- Make sure to add yourself to the authors list in ``setup.py``
 
 
-Contributors
-------------
+Thanks To
+---------
 
-- `@mahmoudimus <https://github.com/mahmoudimus>`_
-- `@fisadev <https://github.com/fisadev>`_
-- `@andresriancho <https://github.com/andresriancho>`_
-- `@e0ne <https://github.com/e0ne>`_
-- `@kevinburke <https://github.com/kevinburke>`_
-- `@DmitrySandalov <https://github.com/DmitrySandalov>`_
-
+- `@mahmoudimus <https://github.com/mahmoudimus>`_, whose `nose-timer <https://github.com/mahmoudimus/nose-timer>`_ plugin this is based off of
