@@ -1,1 +1,1 @@
-from nosetimer.plugin import ParallelPlugin
+from noseparallel.plugin import ParallelPlugin
