@@ -1,5 +1,5 @@
 nose-parallel
-==========
+=============
 
 A plugin to help split up your tests runs across multiple machines.
 
