@@ -22,7 +22,7 @@ plugin, or CI services like `CircleCI <https://circleci.com/docs/parallel-manual
 Install
 -------
 
-.. code::
+.. code:: bash
 
    pip install nose-parallel
 
