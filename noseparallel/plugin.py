@@ -23,6 +23,13 @@ class ParallelPlugin(Plugin):
             return None
         return None
 
+    def wantFunction(self, function):
+        try:
+            return self._pick_by_name(function.__name__)
+        except AttributeError:
+            return None
+        return None
+
     def _pick_by_name(self, name):
         m = hashlib.md5()
         m.update(name)
