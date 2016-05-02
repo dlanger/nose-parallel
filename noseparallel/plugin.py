@@ -12,6 +12,7 @@ class ParallelPlugin(Plugin):
 
     def configure(self, options, config):
         super(ParallelPlugin, self).configure(options, config)
+        self.salt = options.parallel_salt or os.environ.get(options.parallel_salt_env, '')
         self.total_nodes = int(os.environ.get('CIRCLE_NODE_TOTAL') or os.environ.get('NODE_TOTAL', 1))
         self.node_index = int(os.environ.get('CIRCLE_NODE_INDEX') or os.environ.get('NODE_INDEX', 0))
 
@@ -31,9 +32,14 @@ class ParallelPlugin(Plugin):
         return None
 
     def _pick_by_name(self, name):
-        m = hashlib.md5()
+        m = hashlib.md5(self.salt)
         m.update(name)
         class_numeric_id = int(m.hexdigest(), 16)
         if class_numeric_id % self.total_nodes == self.node_index:
             return None
         return False
+
+    def options(self, parser, env=os.environ):
+        parser.add_option("--parallel-salt")
+        parser.add_option("--parallel-salt-env", default="NOSE_PARALLEL_SALT")
+        super(ParallelPlugin, self).options(parser, env=env)

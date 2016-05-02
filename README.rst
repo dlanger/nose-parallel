@@ -48,6 +48,21 @@ If you don't set those variables, ``nose-parallel`` will do the right thing and 
 The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``, 
 respectively) are also natively supported.
 
+Additionally, if you want to further randomize the distribution of tests, so
+that the same test cases don't always run together on the same node, you may
+use the ``--parallel-salt`` option to specify a salt value (e.g. a build
+number, the day of the month). Obviously the salt must be the same on each node
+during a parallel build otherwise some test cases might be missed.
+
+Alternatively you can set environment variable ``NOSE_PARALLEL_SALT``. And, as
+an added convenience, you can change this environment variable to something
+your build environment already configures for each build with the option
+``--parallel-salt-env``. E.g. on CircleCI you could do:
+
+.. code:: bash
+
+    nosetests --with-parallel --with-parallel-salt-env CIRCLE_BUILD_NUM
+
 
 License
 -------
