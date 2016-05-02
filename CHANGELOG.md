@@ -7,4 +7,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - [#5](https://github.com/dlanger/nose-parallel/pull/5) Option to salt the randomizer which decides where tests run (thanks @kouk)
 
-[0.0.2]: https://github.com/dlanger/nose-parallel/compare/2ccb175016cb4c492bb4e924adcb9ba5eac3ded0...0.2.0
+
+[0.2.0]: https://github.com/dlanger/nose-parallel/compare/2ccb175016cb4c492bb4e924adcb9ba5eac3ded0...0.2.0
