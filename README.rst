@@ -3,19 +3,19 @@ nose-parallel
 
 A plugin to help split up your tests runs across multiple machines.
 
-In an ideal world, test suites should be fast enough that they can 
-be run locally on a single machine without extra engineering. This 
+In an ideal world, test suites should be fast enough that they can
+be run locally on a single machine without extra engineering. This
 plugin is there to help when you can't make that to happen.
 
-This **won't** help you run tests in parallel on one machine in different 
-threads; that's what the built-in `multiprocess 
-<http://nose.readthedocs.org/en/latest/plugins/multiprocess.html>`_ plugin 
+This **won't** help you run tests in parallel on one machine in different
+threads; that's what the built-in `multiprocess
+<http://nose.readthedocs.org/en/latest/plugins/multiprocess.html>`_ plugin
 is for.
 
-This **will** help you split up your test suites so that you can run the 
-suites on multiple machines and not have the same test run twice - think 
-Jenkins with the 
-`multijob <https://wiki.jenkins-ci.org/display/JENKINS/Multijob+Plugin>`_ 
+This **will** help you split up your test suites so that you can run the
+suites on multiple machines and not have the same test run twice - think
+Jenkins with the
+`multijob <https://wiki.jenkins-ci.org/display/JENKINS/Multijob+Plugin>`_
 plugin, or CI services like `CircleCI <https://circleci.com/docs/parallel-manual-setup>`_.
 
 
@@ -36,16 +36,16 @@ On each machine:
 #. Run nosetests with the ``--with-parallel`` flag
 #. Do something to join the results from all the machines back together
 
-For example, this is how we'd run nosetests on the second machine in a 
+For example, this is how we'd run nosetests on the second machine in a
 four-machine testing cluster:
 
 .. code:: bash
 
    NODE_TOTAL=4 NODE_INDEX=1 nosetests --with-parallel
-   
-   
-If you don't set those variables, ``nose-parallel`` will do the right thing and run all your tests. 
-The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``, 
+
+
+If you don't set those variables, ``nose-parallel`` will do the right thing and run all your tests.
+The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``,
 respectively) are also natively supported.
 
 If you want to further randomize the distribution of tests, so
@@ -61,7 +61,7 @@ your build environment already configures for each build with the option
 
 .. code:: bash
 
-    nosetests --with-parallel --with-parallel-salt-env CIRCLE_BUILD_NUM
+    nosetests --with-parallel --parallel-salt-env CIRCLE_BUILD_NUM
 
 
 License
