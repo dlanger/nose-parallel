@@ -18,8 +18,7 @@ class ParallelPlugin(Plugin):
 
     def wantMethod(self, method):
         try:
-            cls = method.im_class
-            return self._pick_by_name(cls.__name__)
+            return self._pick_by_name(method.__name__)
         except AttributeError:
             return None
         return None
@@ -32,8 +31,8 @@ class ParallelPlugin(Plugin):
         return None
 
     def _pick_by_name(self, name):
-        m = hashlib.md5(self.salt)
-        m.update(name)
+        m = hashlib.md5(self.salt.encode('utf-8'))
+        m.update(name.encode('utf-8'))
         class_numeric_id = int(m.hexdigest(), 16)
         if class_numeric_id % self.total_nodes == self.node_index:
             return None
