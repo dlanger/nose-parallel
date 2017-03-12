@@ -1,6 +1,8 @@
 ## [0.2.1] - 2017-03-12
 ### Added
 - [#8](https://github.com/dlanger/nose-parallel/pull/8) Python 3 compatibility (thanks @lphuberdeau)
+### Fixed
+- [#8](https://github.com/dlanger/nose-parallel/pull/7) Documentation (thanks @farridav)
 
 
 ## [0.2.0] - 2016-05-01

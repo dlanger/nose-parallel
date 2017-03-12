@@ -14,6 +14,7 @@ setup(
         u'Joseph Lee',
         u'Konstantinos Koukopoulos',
         u'Louis-Philippe Huberdeau',
+        u'David Farrington',
     ]),
     author_email='daniel@langer.me',
     url='https://github.com/dlanger/nose-parallel',
