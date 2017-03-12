@@ -21,6 +21,7 @@ class PluginTest(unittest.TestCase):
         self.assertEqual({None, False}, {rv0, rv1})
 
     def test_want_function_should_accept_on_either_nodes_but_not_both(self):
+
         def f():
             pass
 
