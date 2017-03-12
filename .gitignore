@@ -5,7 +5,7 @@
 *.egg-info
 dist
 build
-eggs
+**/.eggs
 parts
 bin
 var

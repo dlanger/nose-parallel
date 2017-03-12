@@ -1,6 +1,6 @@
-# Change Log
-All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
+## [0.2.1] - 2017-03-12
+### Added
+- [#8](https://github.com/dlanger/nose-parallel/pull/8) Python 3 compatibility (thanks @lphuberdeau)
 
 
 ## [0.2.0] - 2016-05-01
