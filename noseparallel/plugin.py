@@ -30,7 +30,7 @@ class ParallelPlugin(Plugin):
 
     def _parse_possible_variables(self, possible_variables, default=None):
         for variable in possible_variables:
-            value = os.environ.get(variable, default=None)
+            value = os.environ.get(variable, None)
             if value is not None:
                 return int(value)
         return default

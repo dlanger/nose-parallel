@@ -1,3 +1,7 @@
+## [0.3.1] - 2018-10-29
+### Fixed
+- [#13](https://github.com/dlanger/nose-parallel/pull/13) Fix use of `default` keyword
+
 ## [0.3.0] - 2018-10-29
 ### Added
 - [#12](https://github.com/dlanger/nose-parallel/pull/12) Add Buildkite environment variables (thanks @caiofbpa)
