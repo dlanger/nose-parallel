@@ -10,11 +10,30 @@ log = logging.getLogger('nose.plugin.parallel')
 class ParallelPlugin(Plugin):
     name = 'parallel'
 
+    TOTAL_NODES_POSSIBLE_VARIABLES = [
+        'CIRCLE_NODE_TOTAL',
+        'BUILDKITE_PARALLEL_JOB_COUNT',
+        'NODE_TOTAL'
+    ]
+
+    INDEX_NODE_POSSIBLE_VARIABLES = [
+        'CIRCLE_NODE_INDEX',
+        'BUILDKITE_PARALLEL_JOB',
+        'NODE_INDEX'
+    ]
+
     def configure(self, options, config):
         super(ParallelPlugin, self).configure(options, config)
         self.salt = options.parallel_salt or os.environ.get(options.parallel_salt_env, '')
-        self.total_nodes = int(os.environ.get('CIRCLE_NODE_TOTAL') or os.environ.get('NODE_TOTAL', 1))
-        self.node_index = int(os.environ.get('CIRCLE_NODE_INDEX') or os.environ.get('NODE_INDEX', 0))
+        self.total_nodes = self._parse_possible_variables(self.TOTAL_NODES_POSSIBLE_VARIABLES, default=1)
+        self.node_index = self._parse_possible_variables(self.INDEX_NODE_POSSIBLE_VARIABLES, default=0)
+
+    def _parse_possible_variables(self, possible_variables, default=None):
+        for variable in possible_variables:
+            value = os.environ.get(variable, default=None)
+            if value is not None:
+                return int(value)
+        return default
 
     def wantMethod(self, method):
         try:

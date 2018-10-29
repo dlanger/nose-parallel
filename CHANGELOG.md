@@ -1,3 +1,7 @@
+## [0.3.0] - 2018-10-29
+### Added
+- [#12](https://github.com/dlanger/nose-parallel/pull/12) Add Buildkite environment variables (thanks @caiofbpa)
+
 ## [0.2.1] - 2017-03-12
 ### Added
 - [#8](https://github.com/dlanger/nose-parallel/pull/8) Python 3 compatibility (thanks @lphuberdeau)

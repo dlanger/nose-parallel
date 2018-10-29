@@ -45,19 +45,16 @@ four-machine testing cluster:
 
 
 If you don't set those variables, ``nose-parallel`` will do the right thing and run all your tests.
-The CircleCI versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``,
-respectively) are also natively supported.
+The CircleCI and Buildkite versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``, 
+or ``BUILDKITE_PARALLEL_JOB_COUNT`` and ``BUILDKITE_PARALLEL_JOB`` respectively) are also natively supported.
 
 If you want to further randomize the distribution of tests, so
 that the same test cases don't always run together on the same node, you may
-use the ``--parallel-salt`` option to specify a salt value (e.g. a build
-number, the day of the month). The salt must be the same on each node
-during a parallel build, otherwise some test cases might be missed.
+use the ``--parallel-salt`` option or ``NOSE_PARALLEL_SALT`` environment variable 
+to specify a salt value for the randomization (e.g. a build number, the day of the month). 
+The salt must be the same on each node during a parallel build, otherwise some test cases might be missed. 
 
-Alternatively you can set environment variable ``NOSE_PARALLEL_SALT``. And, as
-an added convenience, you can change this environment variable to something
-your build environment already configures for each build with the option
-``--parallel-salt-env``. E.g. on CircleCI you could do:
+For example, on CircleCI you could do:
 
 .. code:: bash
 

@@ -6,15 +6,11 @@ from setuptools import setup
 
 setup(
     name='nose-parallel',
-    version='0.2.1',
+    version='0.3.0',
     description=u'A nosetests plugin to split test suites to run in parallel',
     long_description=open('README.rst').read(),
     author=', '.join([
         u'Daniel Langer',
-        u'Joseph Lee',
-        u'Konstantinos Koukopoulos',
-        u'Louis-Philippe Huberdeau',
-        u'David Farrington',
     ]),
     author_email='daniel@langer.me',
     url='https://github.com/dlanger/nose-parallel',
