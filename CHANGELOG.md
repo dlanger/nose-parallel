@@ -1,3 +1,8 @@
+## [0.4.0] - 2020-04-17
+### Fixed
+- [#14](https://github.com/dlanger/nose-parallel/pull/14) Update license text and indicators (thanks @blag)
+
+
 ## [0.3.1] - 2018-10-29
 ### Fixed
 - [#13](https://github.com/dlanger/nose-parallel/pull/13) Fix use of `default` keyword

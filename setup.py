@@ -17,7 +17,6 @@ setup(
     packages=['noseparallel', ],
     test_suite = 'nose.collector',
     tests_require=['nose'],
-    license='LICENSE',
     entry_points='''
         [nose.plugins.0.10]
         noseparallel= noseparallel:ParallelPlugin
@@ -25,7 +24,6 @@ setup(
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
