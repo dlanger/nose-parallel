@@ -27,7 +27,6 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
         'Topic :: Software Development :: Testing',
         'Environment :: Console',
     ],

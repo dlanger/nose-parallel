@@ -1,7 +1,7 @@
 ## [0.4.0] - 2020-04-17
 ### Fixed
 - [#14](https://github.com/dlanger/nose-parallel/pull/14) Update license text and indicators (thanks @blag)
-
+- [#19](https://github.com/dlanger/nose-parallel/pull/19) Add `setup.cfg` to create universal wheels
 
 ## [0.3.1] - 2018-10-29
 ### Fixed
