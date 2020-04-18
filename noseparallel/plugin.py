@@ -10,16 +10,18 @@ log = logging.getLogger("nose.plugin.parallel")
 class ParallelPlugin(Plugin):
     name = "parallel"
 
-    TOTAL_NODES_POSSIBLE_VARIABLES = [
-        "CIRCLE_NODE_TOTAL",
-        "BUILDKITE_PARALLEL_JOB_COUNT",
-        "NODE_TOTAL",
+    NODE_TOTAL_POSSIBLE_VARIABLES = [
+        'CIRCLE_NODE_TOTAL',
+        'BUILDKITE_PARALLEL_JOB_COUNT',
+        'CI_NODE_TOTAL',
+        'NODE_TOTAL',
     ]
 
     INDEX_NODE_POSSIBLE_VARIABLES = [
-        "CIRCLE_NODE_INDEX",
-        "BUILDKITE_PARALLEL_JOB",
-        "NODE_INDEX",
+        'CIRCLE_NODE_INDEX',
+        'BUILDKITE_PARALLEL_JOB',
+        'CI_NODE_INDEX',
+        'NODE_INDEX',
     ]
 
     def configure(self, options, config):
@@ -28,11 +30,13 @@ class ParallelPlugin(Plugin):
             options.parallel_salt_env, ""
         )
         self.total_nodes = self._parse_possible_variables(
-            self.TOTAL_NODES_POSSIBLE_VARIABLES, default=1
+            self.NODE_TOTAL_POSSIBLE_VARIABLES, default=1
         )
         self.node_index = self._parse_possible_variables(
             self.INDEX_NODE_POSSIBLE_VARIABLES, default=0
         )
+        if self.node_index == self.total_nodes: # Fix edge case where CI starts index at 1 (e.g. GitLab CI)
+            self.node_index = 0
 
     def _parse_possible_variables(self, possible_variables, default=None):
         for variable in possible_variables:

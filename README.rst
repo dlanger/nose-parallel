@@ -45,8 +45,13 @@ four-machine testing cluster:
 
 
 If you don't set those variables, ``nose-parallel`` will do the right thing and run all your tests.
-The CircleCI and Buildkite versions of the environment variables (``CIRCLE_NODE_TOTAL`` and ``CIRCLE_NODE_INDEX``, 
-or ``BUILDKITE_PARALLEL_JOB_COUNT`` and ``BUILDKITE_PARALLEL_JOB`` respectively) are also natively supported.
+It also supports natively the default environment variables from:
+
+- CircleCI
+- Buildkite
+- GitLab CI
+
+We welcome PRs that add native support for other CI alternatives.
 
 If you want to further randomize the distribution of tests, so
 that the same test cases don't always run together on the same node, you may
