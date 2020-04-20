@@ -2,6 +2,7 @@
 ### Added
 - [#19](https://github.com/dlanger/nose-parallel/pull/19) Add `setup.cfg` to create universal wheels
 - [#15](https://github.com/dlanger/nose-parallel/pull/15) Add native support to GitLab CI (thanks @caiofbpa)
+- [#16](https://github.com/dlanger/nose-parallel/pull/16) Add strategy option (thanks @caiofbpa)
 ### Fixed
 - [#14](https://github.com/dlanger/nose-parallel/pull/14) Update license text and indicators (thanks @blag)
 
