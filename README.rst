@@ -65,6 +65,13 @@ For example, on CircleCI you could do:
 
     nosetests --with-parallel --parallel-salt-env CIRCLE_BUILD_NUM
 
+By default ``nose-parallel`` will split tests based on method and function names. You can customize this strategy by setting the ``--parallel-strategy`` option. Supported strategies are: 'CLASS', 'DIRECTORY', 'FILE', 'METHOD', 'FUNCTION' and 'MODULE'.
+
+For example, to split tests based on the file names:
+
+.. code:: bash
+
+    nosetests --with-parallel --parallel-strategy=FILE
 
 License
 -------

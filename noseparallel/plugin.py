@@ -10,6 +10,16 @@ log = logging.getLogger("nose.plugin.parallel")
 class ParallelPlugin(Plugin):
     name = "parallel"
 
+    AVAILABLE_STRATEGIES = [
+        "DEFAULT",
+        "CLASS",
+        "DIRECTORY",
+        "FILE",
+        "METHOD",
+        "FUNCTION",
+        "MODULE",
+    ]
+
     NODE_TOTAL_POSSIBLE_VARIABLES = [
         'CIRCLE_NODE_TOTAL',
         'BUILDKITE_PARALLEL_JOB_COUNT',
@@ -29,6 +39,7 @@ class ParallelPlugin(Plugin):
         self.salt = options.parallel_salt or os.environ.get(
             options.parallel_salt_env, ""
         )
+        self.strategy = options.parallel_strategy
         self.total_nodes = self._parse_possible_variables(
             self.NODE_TOTAL_POSSIBLE_VARIABLES, default=1
         )
@@ -45,19 +56,53 @@ class ParallelPlugin(Plugin):
                 return int(value)
         return default
 
+    def wantClass(self, cls):
+        if "CLASS" != self.strategy:
+            return None
+        try:
+            return self._pick_by_name(cls.__name__)
+        except AttributeError:
+            return None
+
+    def wantDirectory(self, dirname):
+        if "DIRECTORY" != self.strategy:
+            return None
+        try:
+            return self._pick_by_name(dirname)
+        except AttributeError:
+            return None
+
+    def wantFile(self, file):
+        if "FILE" != self.strategy:
+            return None
+        try:
+            return self._pick_by_name(file)
+        except AttributeError:
+            return None
+
     def wantMethod(self, method):
+        if "METHOD" != self.strategy and "DEFAULT" != self.strategy:
+            return None
         try:
             return self._pick_by_name(method.__name__)
         except AttributeError:
             return None
-        return None
 
     def wantFunction(self, function):
+        if "FUNCTION" != self.strategy and "DEFAULT" != self.strategy:
+            return None
         try:
             return self._pick_by_name(function.__name__)
         except AttributeError:
             return None
-        return None
+
+    def wantModule(self, module):
+        if "MODULE" != self.strategy:
+            return None
+        try:
+            return self._pick_by_name(module.__name__)
+        except AttributeError:
+            return None
 
     def _pick_by_name(self, name):
         m = hashlib.md5(self.salt.encode("utf-8"))
@@ -70,4 +115,5 @@ class ParallelPlugin(Plugin):
     def options(self, parser, env=os.environ):
         parser.add_option("--parallel-salt")
         parser.add_option("--parallel-salt-env", default="NOSE_PARALLEL_SALT")
+        parser.add_option("--parallel-strategy", choices=self.AVAILABLE_STRATEGIES, default="DEFAULT")
         super(ParallelPlugin, self).options(parser, env=env)
