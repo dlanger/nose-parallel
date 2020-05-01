@@ -1,4 +1,4 @@
-## [0.4.0] - UNRELEASED
+## [0.4.0] - 2020-05-01
 ### Added
 - [#19](https://github.com/dlanger/nose-parallel/pull/19) Add `setup.cfg` to create universal wheels
 - [#15](https://github.com/dlanger/nose-parallel/pull/15) Add native support to GitLab CI (thanks @caiofbpa)
